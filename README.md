@@ -60,22 +60,12 @@ Doing the above, ensures that all current networks and ip are taken into conside
 
 If you wish to create a deploy of a single Postgres node with the name  **pgdemo** running on a custom docker network called  **pgdemonet** with a subnet of **192.168.10**  you would run the following .
 
-    ./genDeploy -s 192.168.10 -w pgdemonet -c pgdemo
-
-Which would output the following:
-
-
-    The following file: DockerRunThis.pgdemo,  contains the needed docker run commands
-    
-    
-            ALERT -- Before starting the containers you must manually create the network pgdemonet as shown below. Or run the command again with the -y option
-    
-            docker network create --driver bridge --subnet 192.168.10.0/24 --gateway 192.168.10.1 pgdemonet 
+    ./genDeploy -w pgdemonet -c pgdemo -i rocky9_pg17_pgpool -s 192.168.10
 
 
 Lets say you want 3 Postgres nodes. Use the **-n** option.
 
-    ./genDeploy -s 192.168.10 -w pgdemonet -c pgdemo -n 3
+    ./genDeploy -w pgdemonet -c pgdemo -n 3 -i rocky9_pg17_pgpool -s 192.168.10
 
 Again, you get the following message
 
